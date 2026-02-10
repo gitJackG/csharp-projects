@@ -1,0 +1,37 @@
+@FirstApi_HostAddress = http://localhost:5042
+
+GET {{FirstApi_HostAddress}}/api/shoes
+Accept: application/json
+
+###
+
+GET {{FirstApi_HostAddress}}/api/shoes/2
+Accept: application/json
+
+###
+
+POST {{FirstApi_HostAddress}}/api/shoes
+Content-Type: application/json
+{
+    "Name": "Adidas Gazelle",
+    "Brand": "Adidas",
+    "Price": 99
+}
+
+###
+
+PUT {{FirstApi_HostAddress}}/api/shoes/2
+Content-Type: application/json
+{
+    "Id": 2,
+    "Name": "Adidas Fast",
+    "Brand": "Adidas",
+    "Price": 99
+}
+
+###
+
+DELETE {{FirstApi_HostAddress}}/api/shoes/1
+Content-Type: application/json
+
+###
