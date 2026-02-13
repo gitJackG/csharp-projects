@@ -10,6 +10,6 @@ namespace FirstMVC.Data
             : base(options)
         {
         }
-        public DbSet<FirstMVC.Models.Joke> Joke { get; set; } = default!;
+        public DbSet<FirstMVC.Models.Product> Product { get; set; } = default!;
     }
 }
