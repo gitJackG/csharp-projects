@@ -23,6 +23,8 @@ builder.Services.AddScoped<CustomerService>();
 //builder.Services.AddScoped<ChargeService>();
 builder.Services.AddScoped<ProductService>();
 
+builder.Services.AddScoped<StripeSeeder>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -46,7 +48,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Products}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 app.MapRazorPages()
@@ -85,5 +87,12 @@ using (var scope = app.Services.CreateScope())
         await userManager.AddToRoleAsync(user, "Admin");
     }
 }
+
+using (var scope = app.Services.CreateScope())
+{
+    var seeder = scope.ServiceProvider.GetRequiredService<StripeSeeder>();
+    await seeder.SeedAsync();
+}
+
 
 app.Run();
