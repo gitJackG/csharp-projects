@@ -4,9 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
+<h1 style="text-align:center; margin-top:40px;">Store</h1>
+<div class="product-section">
+    @foreach (var item in Model)
+    {
+        <div class="product-box" onclick="pay('@item.StripePriceId')">
+            <img src="/images/@(item.ProductName.ToLower().Replace(" ", "")).jpg" />
+            <h3>@item.ProductName</h3>
+            <div class="product-price">
+                $@(item.ProductPrice / 100.0)
+            </div>
+        </div>
+    }
+</div>
+@* <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
@@ -44,4 +55,4 @@
         </tr>
 }
     </tbody>
-</table>
+</table> *@
