@@ -39,8 +39,8 @@ namespace FirstMVC.Controllers
                     }
                 },
                 Mode = "payment",
-                SuccessUrl = "/",
-                CancelUrl = "/"
+                SuccessUrl = "https://localhost:7267/",
+                CancelUrl = "https://localhost:7267/"
             };
 
             var service = new SessionService();
