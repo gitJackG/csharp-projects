@@ -1,6 +1,8 @@
 using FirstMVC.Data;
+using FirstMVC.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.Configure<StripeModel>(builder.Configuration.GetSection("Stripe"));
+//builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<CustomerService>();
+//builder.Services.AddScoped<ChargeService>();
+builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 
