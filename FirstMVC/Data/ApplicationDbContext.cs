@@ -11,5 +11,14 @@ namespace FirstMVC.Data
         {
         }
         public DbSet<FirstMVC.Models.Product> Product { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Product>()
+                .HasIndex(p => p.StripeProductId)
+                .IsUnique();
+        }
     }
 }
